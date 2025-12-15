@@ -79,23 +79,22 @@ export const Quiz: React.FC = () => {
                                     <h2 className="text-xl font-bold mb-6 text-gray-300 font-serif leading-relaxed">
                                         <span className="text-yellow-600 mr-2">QUERY {currentQuestion.id}:</span> {currentQuestion.text}
                                     </h2>
-                                    <div className="space-y-4">
+                                    <div className="space-y-3">
                                         {currentQuestion.options.map((option, idx) => (
                                             <button
                                                 key={idx}
                                                 onClick={() => handleAnswer(option.weights)}
-                                                className="w-full text-left p-4 rounded-sm bg-gray-800 hover:bg-red-900/30 border border-gray-600 hover:border-red-500 transition-all duration-200 group relative overflow-hidden"
+                                                className="w-full text-left p-4 rounded-sm bg-black/5 hover:bg-red-900/10 border border-black/20 hover:border-red-800 transition-all duration-300 group relative overflow-hidden font-serif"
                                             >
-                                                <div className="absolute inset-0 bg-red-900/0 group-hover:bg-red-900/20 transition-colors"></div>
-                                                <span className="group-hover:text-red-300 transition-colors relative z-10 font-bold tracking-wide text-sm">
+                                                <span className="group-hover:text-red-900 transition-colors relative z-10 font-bold tracking-wide text-lg text-gray-800">
                                                     {option.text}
                                                 </span>
                                             </button>
                                         ))}
                                     </div>
-                                    <div className="mt-8 h-2 w-full bg-gray-800 rounded-none border border-gray-700">
+                                    <div className="mt-8 h-1 w-full bg-black/10 rounded-none">
                                         <motion.div
-                                            className="h-full bg-yellow-600"
+                                            className="h-full bg-red-900"
                                             initial={{ width: `${(currentQuestionIndex / questions.length) * 100}%` }}
                                             animate={{ width: `${(currentQuestionIndex / questions.length) * 100}%` }}
                                         />
