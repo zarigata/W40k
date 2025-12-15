@@ -1,6 +1,8 @@
 import { useState, useCallback, useEffect } from 'react';
 import { Quiz } from './components/Quiz';
 import { FactionShowcase } from './components/FactionShowcase';
+import { LoreTicker } from './components/LoreTicker';
+import { InteractiveLogo } from './components/InteractiveLogo';
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
 import { motion, AnimatePresence } from 'framer-motion';
@@ -22,7 +24,7 @@ function App() {
   return (
     <div className="bg-black min-h-screen text-white font-sans selection:bg-red-500 selection:text-white relative overflow-x-hidden">
 
-      {/* Dynamic Background Particles (Embers/Ash) */}
+      {/* Dynamic Background Particles (War Sparks) */}
       {init && (
         <Particles
           id="tsparticles"
@@ -34,40 +36,55 @@ function App() {
             interactivity: {
               events: {
                 onClick: { enable: true, mode: "push" },
-                onHover: { enable: true, mode: "repulse" },
+                onHover: { enable: true, mode: "attract" },
+                resize: true,
               },
               modes: {
-                push: { quantity: 4 },
-                repulse: { distance: 100, duration: 0.4 },
+                push: { quantity: 10 },
+                attract: { distance: 200, duration: 0.4, factor: 5 },
               },
             },
             particles: {
-              color: { value: ["#ff0000", "#ffaa00", "#550000"] }, // Fire/Ember colors
-              links: { enable: false },
+              color: { value: ["#ff0000", "#ffaa00", "#ff4400"] },
               move: {
-                direction: "top",
+                direction: "none",
                 enable: true,
-                outModes: { default: "out" },
+                outModes: { default: "destroy" },
                 random: true,
-                speed: 1, // Slow rising ash
+                speed: 6,
                 straight: false,
               },
               number: {
                 density: { enable: true, area: 800 },
-                value: 80,
+                value: 150,
               },
               opacity: {
-                value: 0.5,
-                animation: { enable: true, speed: 0.5, minimumValue: 0.1 }
+                value: 1,
+                animation: { enable: true, speed: 1, minimumValue: 0.1 }
               },
               shape: { type: "circle" },
               size: {
                 value: { min: 1, max: 3 },
+                animation: { enable: true, speed: 5, minimumValue: 0.1, sync: false }
               },
+              life: {
+                duration: {
+                  sync: false,
+                  value: 3
+                },
+                count: 0,
+                delay: {
+                  random: {
+                    enable: true,
+                    minimumValue: 0.5
+                  },
+                  value: 1
+                }
+              }
             },
             detectRetina: true,
           }}
-          className="absolute inset-0 z-0 pointer-events-none"
+          className="absolute inset-0 z-0 pointer-events-none mix-blend-screen"
         />
       )}
 
@@ -119,15 +136,11 @@ function App() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
               </div>
 
-              <div className="relative mb-8">
-                <motion.img
-                  src="/W40k/src/assets/aquila.png"
-                  alt="Aquila"
-                  className="w-32 h-32 md:w-48 md:h-48 mx-auto mb-4 drop-shadow-[0_0_15px_rgba(255,215,0,0.5)] opacity-90"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.2, duration: 1 }}
-                />
+              <div className="relative mb-8 w-full max-w-2xl mx-auto">
+                {/* Interactive Logo Replacement */}
+                <div className="mb-4">
+                  <InteractiveLogo />
+                </div>
 
                 <h1 className="relative text-5xl md:text-8xl font-black tracking-tighter drop-shadow-2xl">
                   <motion.span
@@ -206,6 +219,9 @@ function App() {
           )}
         </AnimatePresence>
       </main>
+
+      {/* Lore Ticker always visible */}
+      <LoreTicker />
     </div>
   );
 }
