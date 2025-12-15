@@ -102,7 +102,7 @@ function App() {
       </nav>
 
       {/* Main Content */}
-      <main className="pt-20 relative z-10">
+      <main className="pt-20 relative z-10 w-full max-w-7xl mx-auto px-4">
         <AnimatePresence mode="wait">
           {view === 'home' && (
             <motion.div
@@ -111,38 +111,38 @@ function App() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 1.05, filter: 'blur(10px)' }}
               transition={{ duration: 0.5 }}
-              className="min-h-[80vh] flex flex-col items-center justify-center p-4 text-center"
+              className="min-h-[80vh] flex flex-col items-center justify-center p-4 text-center relative"
             >
-              <div className="relative">
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 0.5 }}
-                  transition={{ delay: 0.5, duration: 1 }}
-                  className="absolute -inset-20 bg-red-600/20 blur-[100px] rounded-full pointer-events-none"
+              {/* Hero Background Image - Only on Home */}
+              <div className="absolute inset-0 z-[-1] rounded-3xl overflow-hidden opacity-50 mask-gradient-to-b">
+                <img src="/W40k/src/assets/hero_bg.png" alt="Cathedral" className="w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+              </div>
+
+              <div className="relative mb-8">
+                <motion.img
+                  src="/W40k/src/assets/aquila.png"
+                  alt="Aquila"
+                  className="w-32 h-32 md:w-48 md:h-48 mx-auto mb-4 drop-shadow-[0_0_15px_rgba(255,215,0,0.5)] opacity-90"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.2, duration: 1 }}
                 />
 
-                <h1 className="relative text-6xl md:text-9xl font-black mb-6 tracking-tighter">
+                <h1 className="relative text-5xl md:text-8xl font-black tracking-tighter drop-shadow-2xl">
                   <motion.span
-                    initial={{ y: 50, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ delay: 0.1 }}
-                    className="block text-white"
-                  >
-                    CHOOSE
-                  </motion.span>
-                  <motion.span
-                    initial={{ y: 50, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ delay: 0.2 }}
-                    className="block text-white"
-                  >
-                    YOUR
-                  </motion.span>
-                  <motion.span
-                    initial={{ y: 50, opacity: 0 }}
+                    initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: 0.3 }}
-                    className="block text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-orange-500 to-red-800 animate-text-shimmer bg-[size:200%_auto]"
+                    className="block text-gray-300 font-medieval tracking-normal"
+                  >
+                    CHOOSE YOUR
+                  </motion.span>
+                  <motion.span
+                    initial={{ scale: 0.9, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ delay: 0.5, type: 'spring' }}
+                    className="block text-gold-gradient leading-none mt-2 filter drop-shadow-[0_4px_4px_rgba(0,0,0,1)]"
                   >
                     ALLEGIANCE
                   </motion.span>
@@ -153,7 +153,7 @@ function App() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.6 }}
-                className="max-w-xl text-gray-400 text-lg mb-12 leading-relaxed font-serif italic"
+                className="max-w-xl text-gray-300 text-lg mb-12 leading-relaxed font-serif italic drop-shadow-lg"
               >
                 "In the grim darkness of the far future, there is only war.
                 Undergo the psycho-augmentation protocols to discover your genetic destiny."
@@ -164,10 +164,10 @@ function App() {
                   whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(220,38,38,0.6)" }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => setView('quiz')}
-                  className="group relative px-10 py-5 bg-red-700 text-white font-black uppercase tracking-[0.2em] transition-all overflow-hidden border border-red-500"
+                  className="group relative px-10 py-5 bg-red-900/80 text-white font-black uppercase tracking-[0.2em] transition-all overflow-hidden border-2 border-red-500/50 backdrop-blur-sm shadow-[0_0_20px_rgba(220,38,38,0.4)]"
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-150%] group-hover:translate-x-[150%] transition-transform duration-700 skew-x-12" />
-                  <span className="relative flex items-center gap-2">
+                  <span className="relative flex items-center gap-2 drop-shadow-md">
                     Initiate Protocol
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
                   </span>
@@ -177,7 +177,7 @@ function App() {
                   whileHover={{ scale: 1.05, borderColor: "white", color: "white" }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => setView('showcase')}
-                  className="px-8 py-4 border border-gray-600 text-gray-400 font-bold uppercase tracking-[0.2em] transition-all hover:bg-white/5"
+                  className="px-8 py-4 border border-gray-500 text-gray-400 font-bold uppercase tracking-[0.2em] transition-all hover:bg-white/5 bg-black/30 backdrop-blur-sm"
                 >
                   View Archives
                 </motion.button>
@@ -186,7 +186,7 @@ function App() {
               {/* Footer / Credits */}
               <motion.div
                 initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1 }}
-                className="fixed bottom-4 text-[10px] text-gray-700 font-mono"
+                className="fixed bottom-4 text-[10px] text-gray-500 font-mono"
               >
                 Data-slate 773.M42 // Authorized by the Inquisition // Thought for the Day: "Hope is the first step on the road to disappointment."
               </motion.div>
@@ -211,4 +211,3 @@ function App() {
 }
 
 export default App;
-```
