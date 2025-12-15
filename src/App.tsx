@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Quiz } from './components/Quiz';
 import { FactionShowcase } from './components/FactionShowcase';
 import { LoreTicker } from './components/LoreTicker';
@@ -37,7 +37,7 @@ function App() {
               events: {
                 onClick: { enable: true, mode: "push" },
                 onHover: { enable: true, mode: "attract" },
-                resize: true,
+                resize: { enable: true },
               },
               modes: {
                 push: { quantity: 10 },
@@ -55,17 +55,17 @@ function App() {
                 straight: false,
               },
               number: {
-                density: { enable: true, area: 800 },
+                density: { enable: true, width: 800 },
                 value: 150,
               },
               opacity: {
                 value: 1,
-                animation: { enable: true, speed: 1, minimumValue: 0.1 }
+                animation: { enable: true, speed: 1 }
               },
               shape: { type: "circle" },
               size: {
                 value: { min: 1, max: 3 },
-                animation: { enable: true, speed: 5, minimumValue: 0.1, sync: false }
+                animation: { enable: true, speed: 5, sync: false }
               },
               life: {
                 duration: {
