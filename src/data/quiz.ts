@@ -1,5 +1,3 @@
-
-
 export interface Question {
     id: number;
     text: string;
@@ -12,125 +10,184 @@ export interface Question {
 export const questions: Question[] = [
     {
         id: 1,
-        text: "When facing a problem, what is your approach?",
+        text: "The enemy is at the gates. How do you prepare your defense?",
         options: [
             {
-                text: "Charge head-on with overwhelming force and faith.",
-                weights: { imperium: 3, orks: 2, chaos: 1 },
+                text: "Consult the Codex Astartes. Strict adherence to tactical doctrine ensures victory.",
+                weights: { ultramarines: 5, guard: 1, fists: 2 } // 'fists' not in list, stick to main 9
             },
             {
-                text: "Analyze deeply and apply the perfect technological or strategic solution.",
-                weights: { tau: 3, necrons: 2, eldar: 1, imperium: 1 },
+                text: "Charge them head-on! My fury is my weapon, even if I lose control.",
+                weights: { blood_angels: 5, space_wolves: 3, sisters: 1 }
             },
             {
-                text: "Adapt on the fly and use whatever keeps me surviving and growing.",
-                weights: { tyranids: 3, chaos: 2, orks: 1 },
+                text: "Fortify our position with heavy weapons and massed infantry. Hold the line at all costs.",
+                weights: { guard: 5, ultramarines: 2, sisters: 2 }
             },
             {
-                text: "Scheming from the shadows or using ancient wisdom.",
-                weights: { eldar: 3, necrons: 1, chaos: 1 },
+                text: "Analyze the enemy's weakness with cold logic. Calculate the most efficient kill solution.",
+                weights: { admech: 5, necrons: 0, ultramarines: 2, inquisition: 3 }
             },
-        ],
+            {
+                text: "I fight alone or with my elite brothers. We are worth a thousand of their number.",
+                weights: { custodes: 5, grey_knights: 0, space_wolves: 2 } // grey_knights not in list yet
+            }
+        ]
     },
     {
         id: 2,
-        text: "What do you value most?",
+        text: "What is your view on the Codex Astartes (or the rules of engagement)?",
         options: [
             {
-                text: "Loyalty and Honor.",
-                weights: { imperium: 3, tau: 1 },
+                text: "It is the holy scripture of war. To deviate is to invite disaster.",
+                weights: { ultramarines: 5, sisters: 3 }
             },
             {
-                text: "Freedom and Power.",
-                weights: { chaos: 3, orks: 2, eldar: 1 },
+                text: "It has its uses, but a warrior must trust their instincts and the spirit of the pack.",
+                weights: { space_wolves: 5, blood_angels: 2 }
             },
             {
-                text: "Efficiency and Order.",
-                weights: { necrons: 3, tau: 2, imperium: 1 },
+                text: "Rules are for those who lack the will to do what is necessary to save the Imperium.",
+                weights: { inquisition: 5, dark_angels: 3 }
             },
             {
-                text: "Biomass and Evolution.",
-                weights: { tyranids: 3 },
+                text: "My duty is written in my genetic code by the Emperor Himself. I need no book.",
+                weights: { custodes: 5, blood_angels: 1 }
             },
-        ],
+            {
+                text: "I follow the orders of the Omnissiah. Logic dictates my path.",
+                weights: { admech: 5 }
+            }
+        ]
     },
     {
         id: 3,
-        text: "Pick a weapon.",
+        text: "A civilian population has been exposed to potential Warp corruption. What do you do?",
         options: [
             {
-                text: "Chainsword (Melee & Brutal).",
-                weights: { imperium: 2, chaos: 2, orks: 2 },
+                text: "Exterminate them all. Innocence proves nothing. We cannot risk the spread.",
+                weights: { inquisition: 5, dark_angels: 2, sisters: 2 }
             },
             {
-                text: "Railgun (Long Range & High Tech).",
-                weights: { tau: 3, necrons: 1 },
+                text: "Burn the heretics with holy fire, but spare the truly faithful... if any remain.",
+                weights: { sisters: 5, inquisition: 3 }
             },
             {
-                text: "Psychic Powers / Magic.",
-                weights: { eldar: 3, chaos: 2, tyranids: 1 },
+                text: "Defend them! We are the shields of humanity, not its executioners.",
+                weights: { space_wolves: 5, salamanders: 5, blood_angels: 2 } // salamanders traits align with wolves here
             },
             {
-                text: "Gauss Flayer (Disintegrate atoms).",
-                weights: { necrons: 3 },
-            },
-        ],
+                text: "Assess the level of taint. Quarantine and study if possible, purge if necessary.",
+                weights: { ultramarines: 3, admech: 2 }
+            }
+        ]
     },
     {
         id: 4,
-        text: "How do you view aliens/others?",
+        text: "What is your greatest secret or shame?",
         options: [
             {
-                text: "Suffer not the alien to live. Purge them!",
-                weights: { imperium: 3, necrons: 1 },
+                text: "I have none. My loyalty is absolute and transparent.",
+                weights: { ultramarines: 4, custodes: 5, sisters: 3, guard: 3 }
             },
             {
-                text: "They are useful allies if they submit to the Greater Good.",
-                weights: { tau: 3 },
+                text: "A terrible rage lurks within my blood. I struggle to keep the beast at bay.",
+                weights: { blood_angels: 5, space_wolves: 2 }
             },
             {
-                text: "They are food.",
-                weights: { tyranids: 3, orks: 1 }, // Orks see them as fighting partners mainly
+                text: "We do not talk about the past. To ask is to invite death. (Hunt the Fallen)",
+                weights: { dark_angels: 5, inquisition: 2 }
             },
             {
-                text: "Primitives to be manipulated or ignored.",
-                weights: { eldar: 3, necrons: 2 },
-            },
-        ],
+                text: "I forbid you to investigate my research. Knowledge is mine alone.",
+                weights: { admech: 4, inquisition: 1 }
+            }
+        ]
     },
     {
         id: 5,
-        text: "What is your battle cry?",
+        text: "How do you view the Emperor?",
         options: [
             {
-                text: "For the Emperor!",
-                weights: { imperium: 3 },
+                text: "He is a God. I worship Him with every breath and bullet.",
+                weights: { sisters: 5, guard: 4, ultramarines: 2, inquisition: 3 }
             },
             {
-                text: "WAAAGH!",
-                weights: { orks: 3 },
+                text: "He is the Allfather, the greatest warrior. I honor Him through deeds, not prayer.",
+                weights: { space_wolves: 5 }
             },
             {
-                text: "Blood for the Blood God!",
-                weights: { chaos: 3 },
+                text: "He is the Omnissiah, the motive force of the universe.",
+                weights: { admech: 5 }
             },
             {
-                text: "(Silence or eerie mechanical noise)",
-                weights: { necrons: 3, tyranids: 2 },
+                text: "He is my creator and my charge. I failed Him once; I will never fail Him again.",
+                weights: { custodes: 5, blood_angels: 2 }
             },
-        ],
+            {
+                text: "He is the master of mankind. We serve his will, even in the shadows.",
+                weights: { inquisition: 4, dark_angels: 3, ultramarines: 3 }
+            }
+        ]
     },
+    {
+        id: 6,
+        text: "Choose a weapon.",
+        options: [
+            {
+                text: "Bolter and Chainsword. The tools of an Astartes.",
+                weights: { ultramarines: 3, dark_angels: 3, blood_angels: 3, space_wolves: 3 }
+            },
+            {
+                text: "Flamer and Melta. Purge it with holy fire.",
+                weights: { sisters: 5, salamanders: 4 }
+            },
+            {
+                text: "Guardian Spear or Sentinel Blade. Mastercrafted perfection.",
+                weights: { custodes: 5 }
+            },
+            {
+                text: "Arc Rifle and Omnissian Axe. Technology is the ultimate weapon.",
+                weights: { admech: 5 }
+            },
+            {
+                text: "Lasgun and Bayonet. Quantity has a quality all its own.",
+                weights: { guard: 5 }
+            },
+            {
+                text: "My mind and my authority. I wield the power of the Imperium itself.",
+                weights: { inquisition: 5 }
+            }
+        ]
+    },
+    {
+        id: 7,
+        text: "The battle is lost. Reinforcements are impossible. What do you do?",
+        options: [
+            {
+                text: "Fight until the last drop of blood! For Sanguinius!",
+                weights: { blood_angels: 5 }
+            },
+            {
+                text: "Hold the line! The Planet broke before the Guard did!",
+                weights: { guard: 5 }
+            },
+            {
+                text: "Initiate the scorched earth protocol. If we can't have it, no one can. Exterminatus.",
+                weights: { inquisition: 5, dark_angels: 2 }
+            },
+            {
+                text: "Make a tactical withdrawal to a more advantageous position to counter-attack.",
+                weights: { ultramarines: 5, custodes: 2 }
+            },
+            {
+                text: "Unleash the Wulfen. Go down fighting in a pile of corpses.",
+                weights: { space_wolves: 5 }
+            },
+            {
+                text: "Pray for a miracle. The Emperor protects.",
+                weights: { sisters: 5 }
+            }
+        ]
+    }
 ];
-
-export const calculateFaction = (answers: { [questionId: number]: number }): string => {
-    // Logic to sum weights and return top faction ID
-    // Simple implementation using reduce
-    let topFaction = 'imperium';
-
-    // Weights (accumulated elsewhere, passed as answers? No, answers are questionId -> option Index?)
-    // Wait, the argument says answers: {[id]: number}. 
-    // In Quiz.tsx I'm calculating scores directly. calculateFaction appears unused in Quiz.tsx?
-    // I should remove it if it's unused.
-    console.log(answers);
-    return topFaction;
-};

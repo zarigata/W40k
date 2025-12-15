@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { factions } from '../data/factions';
+import { imperiumFactions } from '../data/imperium';
 
 export const FactionShowcase: React.FC = () => {
     const [selectedId, setSelectedId] = useState<string | null>(null);
 
-    const selectedFaction = factions.find(f => f.id === selectedId);
+    const selectedFaction = imperiumFactions.find(f => f.id === selectedId);
 
     return (
         <div className="min-h-screen bg-black text-white p-8 overflow-x-hidden">
@@ -14,7 +14,7 @@ export const FactionShowcase: React.FC = () => {
             </h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
-                {factions.map(faction => (
+                {imperiumFactions.map(faction => (
                     <motion.div
                         layoutId={`card-${faction.id}`}
                         key={faction.id}
